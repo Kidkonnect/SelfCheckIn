@@ -36,10 +36,10 @@ products from Adafruit!
 
 #include <Adafruit_PN532.h>
 
-#define SCK  (2)
-#define MOSI (5)
-#define SS   (4)
-#define MISO (3)
+#define SCK  (5)
+#define MOSI (2)
+#define SS   (3)
+#define MISO (4)
 
 //#define SCK  (15)
 //#define MOSI (14)
