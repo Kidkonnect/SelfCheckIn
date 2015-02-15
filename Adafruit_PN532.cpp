@@ -148,7 +148,7 @@ void Adafruit_PN532::PrintHexChar(const byte * data, const uint32_t numBytes)
     Keyboard.print(data[szPos], HEX);
     if ((numBytes > 1) && (szPos != numBytes - 1))
     {
-      Keyboard.print(" ");
+      //Keyboard.print(" ");
     }
   }
   Keyboard.print("  ");
