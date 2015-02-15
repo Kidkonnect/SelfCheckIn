@@ -103,6 +103,38 @@ void loop(void) {
       //Keyboard.print("Seems to be a Mifare Classic card #");
       Keyboard.println(cardid);
     }
+    if (uidLength == 7)
+    {
+      // We probably have a Mifare Ultralight card ...
+      //Keyboard.println("Seems to be a Mifare Ultralight tag (7 byte UID)");
+	  
+      // Try to read the first general-purpose user page (#4)
+      //Keyboard.println("Reading page 4");
+      uint8_t data[32];
+      success = nfc.mifareultralight_ReadPage (4, data);
+      if (success)
+      {
+        // Data seems to have been read ... spit it out
+        //nfc.PrintHexChar(data, 4);
+        uint32_t cardid = data[0];
+        cardid <<= 8;
+        cardid |= data[1];
+        cardid <<= 8;
+        cardid |= data[2];  
+        cardid <<= 8;
+        cardid |= data[3]; 
+        //cardid <<= 8;
+        //cardid |= data[4]; 
+        //cardid <<= 8;
+        //cardid |= data[5]; 
+        //cardid <<= 8;
+        //cardid |= data[6]; 
+        //Keyboard.println("");
+		
+        // Wait a bit before reading the card again
+        Keyboard.println(cardid);
+      }
+    }
     delay(3000);  //used to allow check in system to display the print dialog
     Keyboard.println("");  //enter or return 
   }
