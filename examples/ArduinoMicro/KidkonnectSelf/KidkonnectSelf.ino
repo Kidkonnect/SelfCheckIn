@@ -92,6 +92,7 @@ void loop(void) {
     
     if (uidLength == 4)
     {
+      //Keyboard.println("found 4");
       // We probably have a Mifare Classic card ... 
       uint32_t cardid = uid[0];
       cardid <<= 8;
@@ -111,7 +112,7 @@ void loop(void) {
       // Try to read the first general-purpose user page (#4)
       //Keyboard.println("Reading page 4");
       uint8_t data[32];
-      success = nfc.mifareultralight_ReadPage (4, data);
+      success = nfc.mifareultralight_ReadPage (0, data);
       if (success)
       {
         // Data seems to have been read ... spit it out
@@ -123,12 +124,12 @@ void loop(void) {
         cardid |= data[2];  
         cardid <<= 8;
         cardid |= data[3]; 
-        //cardid <<= 8;
-        //cardid |= data[4]; 
-        //cardid <<= 8;
-        //cardid |= data[5]; 
-        //cardid <<= 8;
-        //cardid |= data[6]; 
+        cardid <<= 8;
+        cardid |= data[4]; 
+        cardid <<= 8;
+        cardid |= data[5]; 
+        cardid <<= 8;
+        cardid |= data[6]; 
         //Keyboard.println("");
 		
         // Wait a bit before reading the card again
