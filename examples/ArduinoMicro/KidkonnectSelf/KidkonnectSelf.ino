@@ -136,7 +136,7 @@ void loop(void) {
         Keyboard.println(cardid);
       }
     }
-    delay(3000);  //used to allow check in system to display the print dialog
+    delay(1000);  //used to allow check in system to display the print dialog
     Keyboard.println("");  //enter or return 
   }
 }
